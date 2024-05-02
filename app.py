@@ -46,7 +46,7 @@ if st.sidebar.checkbox('Show Images'):
     arr = ['Data Augmentation : ', 'Model : ', "Confusion Matrix : ","Accuracy : ","Conclusion : ","Dataset : "]
     for i in range(1, 7):
         head = arr[i-1]
-        st.header(f'<p style="font-size:30px;color:while;text-align: center;"><strong>{head} : </strong></p>', unsafe_allow_html=True)
+        st.markdown('<h1 style="font-size:30px;color:while;">Image Classification App</h1>', unsafe_allow_html=True)
         image_path = f"{i}.jpeg"
         image = Image.open(image_path)
         # Centered image using HTML and CSS
