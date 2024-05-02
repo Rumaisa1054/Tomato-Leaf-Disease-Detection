@@ -42,7 +42,7 @@ if uploaded_image is not None:
 
     # Make prediction
     prediction = predict_class(img_array)
-    st.write('Prediction :' , prediction)
+    st.success('Prediction :' , prediction)
 
 # Second Tab
 if st.sidebar.checkbox('Show Images'):
