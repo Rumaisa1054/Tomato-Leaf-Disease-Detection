@@ -42,11 +42,11 @@ if uploaded_image is not None:
 
     # Make prediction
     prediction = predict_class(img_array)
+    st.markdown("------------------------------------------------------")
     st.markdown(f'<p style="font-size:30px;color:green;"><strong>Prediction : </strong> {prediction}</p>', unsafe_allow_html=True)
-
+    st.markdown("------------------------------------------------------")
 # Second Tab
 if st.sidebar.checkbox('Show Images'):
-    st.subheader('Images from 1.jpeg to 6.jpeg')
     arr = ['Data Augmentation : ', 'Model : ', "Confusion Matrix : ","Accuracy : ","Conclusion : ","Dataset : "]
     for i in range(1, 7):
         head = arr[i-1]
