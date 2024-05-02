@@ -8,20 +8,6 @@ model1 = tf.keras.models.load_model('partly_trained3.h5')
 # Define class names
 class_names = ['Tomato_Bacterial_spot', 'Tomato_Early_blight', 'Tomato_Late_blight', 'Tomato_Leaf_Mold', 'Tomato_healthy']
 
-# Define image size
-image_size = 224
-# Centered image using CSS
-st.markdown(
-    f"""
-    <style>
-    .centered {{
-        display: flex;
-        justify-content: center;
-    }}
-    </style>
-    """,
-    unsafe_allow_html=True
-)
 
 
 # Function to preprocess and make predictions
@@ -46,7 +32,12 @@ with st.sidebar:
 if uploaded_image is not None:
     # Display the image
     image = Image.open(uploaded_image)
-    st.image(image, caption='Uploaded Image', width=500, use_column_width=False, output_format='JPEG',  class_='centered')
+    st.markdown(
+        f'<div style="display: flex; justify-content: center;">'
+        f'<img src="data:image/jpeg;base64,{image}" style="width: 300px;">'
+        f'</div>',
+        unsafe_allow_html=True
+    )
     # Convert the image to numpy array
     img_array = np.array(image)
 
@@ -63,4 +54,10 @@ if st.sidebar.checkbox('Show Images'):
         st.header(f'<p style="font-size:30px;color:while;text-align: center;"><strong>{head} : </strong></p>', unsafe_allow_html=True)
         image_path = f"{i}.jpeg"
         image = Image.open(image_path)
-        st.image(image, width=500, use_column_width=False, output_format='JPEG',  class_='centered')
+        # Centered image using HTML and CSS
+        st.markdown(
+            f'<div style="display: flex; justify-content: center;">'
+            f'<img src="data:image/jpeg;base64,{image}" style="width: 300px;">'
+            f'</div>',
+            unsafe_allow_html=True
+        )
