@@ -10,6 +10,19 @@ class_names = ['Tomato_Bacterial_spot', 'Tomato_Early_blight', 'Tomato_Late_blig
 
 # Define image size
 image_size = 224
+# Centered image using CSS
+st.markdown(
+    f"""
+    <style>
+    .centered {{
+        display: flex;
+        justify-content: center;
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 
 # Function to preprocess and make predictions
 def predict_class(image):
@@ -24,8 +37,7 @@ def predict_class(image):
     return predicted_class
 
 # Streamlit App
-st.title('Image Classification App')
-
+st.title('<h1 style="text-align: center;">Image Classification App</h1>', unsafe_allow_html=True)
 # First Tab
 with st.sidebar:
     st.subheader('Upload Your Image')
@@ -34,22 +46,21 @@ with st.sidebar:
 if uploaded_image is not None:
     # Display the image
     image = Image.open(uploaded_image)
-    st.image(image, caption='Uploaded Image', width=500)
-
+    st.image(image, caption='Uploaded Image', width=500, use_column_width=False, output_format='JPEG',  class_='centered')
     # Convert the image to numpy array
     img_array = np.array(image)
 
     # Make prediction
     prediction = predict_class(img_array)
     st.markdown("------------------------------------------------------")
-    st.markdown(f'<p style="font-size:30px;color:green;"><strong>Prediction : </strong> {prediction}</p>', unsafe_allow_html=True)
+    st.markdown(f'<p style="font-size:30px;color:while;text-align: center;"><strong>Prediction : </strong> {prediction}</p>', unsafe_allow_html=True)
     st.markdown("------------------------------------------------------")
 # Second Tab
 if st.sidebar.checkbox('Show Images'):
     arr = ['Data Augmentation : ', 'Model : ', "Confusion Matrix : ","Accuracy : ","Conclusion : ","Dataset : "]
     for i in range(1, 7):
         head = arr[i-1]
-        st.header(head)
+        st.header(f'<p style="font-size:30px;color:while;text-align: center;"><strong>{head} : </strong></p>', unsafe_allow_html=True)
         image_path = f"{i}.jpeg"
         image = Image.open(image_path)
-        st.image(image, caption=f'Image {i}', width=500)
+        st.image(image, width=500, use_column_width=False, output_format='JPEG',  class_='centered')
