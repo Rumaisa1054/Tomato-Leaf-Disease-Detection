@@ -13,7 +13,7 @@ class_names = ['Tomato_Bacterial_spot', 'Tomato_Early_blight', 'Tomato_Late_blig
 # Function to preprocess and make predictions
 def predict_class(image):
     # Preprocess the image
-    image = tf.image.resize(image, (image_size, image_size))
+    image = tf.image.resize(image, (224, 224))
     image = np.expand_dims(image, axis=0)
 
     # Make predictions
