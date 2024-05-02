@@ -2,7 +2,7 @@ import streamlit as st
 import tensorflow as tf
 from PIL import Image
 import numpy as np
-
+smaller_width = 200
 # Load the pre-trained model
 model1 = tf.keras.models.load_model('partly_trained3.h5')
 
