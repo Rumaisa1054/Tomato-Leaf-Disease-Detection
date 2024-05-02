@@ -23,7 +23,7 @@ def predict_class(image):
     return predicted_class
 
 # Streamlit App
-st.markdown('<h1 style="text-align: center;">Image Classification App</h1>', unsafe_allow_html=True)
+st.markdown('<h1>Image Classification App</h1>', unsafe_allow_html=True)
 # First Tab
 with st.sidebar:
     st.subheader('Upload Your Image')
@@ -32,19 +32,14 @@ with st.sidebar:
 if uploaded_image is not None:
     # Display the image
     image = Image.open(uploaded_image)
-    st.markdown(
-        f'<div style="display: flex; justify-content: center;">'
-        f'<img src="data:image/jpeg;base64,{image}" style="width: 300px;">'
-        f'</div>',
-        unsafe_allow_html=True
-    )
+    st.image(image,width = 600)
     # Convert the image to numpy array
     img_array = np.array(image)
 
     # Make prediction
     prediction = predict_class(img_array)
     st.markdown("------------------------------------------------------")
-    st.markdown(f'<p style="font-size:30px;color:while;text-align: center;"><strong>Prediction : </strong> {prediction}</p>', unsafe_allow_html=True)
+    st.markdown(f'<p style="font-size:30px;color:while;"><strong>Prediction : </strong> {prediction}</p>', unsafe_allow_html=True)
     st.markdown("------------------------------------------------------")
 # Second Tab
 if st.sidebar.checkbox('Show Images'):
@@ -55,9 +50,4 @@ if st.sidebar.checkbox('Show Images'):
         image_path = f"{i}.jpeg"
         image = Image.open(image_path)
         # Centered image using HTML and CSS
-        st.markdown(
-            f'<div style="display: flex; justify-content: center;">'
-            f'<img src="data:image/jpeg;base64,{image}" style="width: 300px;">'
-            f'</div>',
-            unsafe_allow_html=True
-        )
+        st.image(image,width = 600)
