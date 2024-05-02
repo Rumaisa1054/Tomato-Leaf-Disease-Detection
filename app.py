@@ -42,7 +42,7 @@ if uploaded_image is not None:
 
     # Make prediction
     prediction = predict_class(img_array)
-    st.success('Prediction :' , prediction)
+    st.markdown(f'<p style="font-size:20px;color:blue;"><strong>Prediction : </strong> {prediction}</p>', unsafe_allow_html=True)
 
 # Second Tab
 if st.sidebar.checkbox('Show Images'):
