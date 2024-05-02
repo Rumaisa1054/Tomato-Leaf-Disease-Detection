@@ -42,7 +42,7 @@ if uploaded_image is not None:
 
     # Make prediction
     prediction = predict_class(img_array)
-    st.heading('Prediction:', prediction)
+    st.header('Prediction:', prediction)
 
 # Second Tab
 if st.sidebar.checkbox('Show Images'):
@@ -50,7 +50,7 @@ if st.sidebar.checkbox('Show Images'):
     arr = ['Data Augmentation : ', 'Model : ', "Confusion Matrix : ","Accuracy : ","Conclusion : ","Dataset : "]
     for i in range(1, 7):
         head = arr[i]
-        st.heading(head)
+        st.header(head)
         image_path = f"{i}.jpeg"
         image = Image.open(image_path)
         st.image(image, caption=f'Image {i}', use_column_width=True)
