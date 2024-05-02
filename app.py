@@ -2,7 +2,6 @@ import streamlit as st
 import tensorflow as tf
 from PIL import Image
 import numpy as np
-smaller_width = 200
 # Load the pre-trained model
 model1 = tf.keras.models.load_model('partly_trained3.h5')
 
@@ -35,7 +34,7 @@ with st.sidebar:
 if uploaded_image is not None:
     # Display the image
     image = Image.open(uploaded_image)
-    st.image(image, caption='Uploaded Image', width=smaller_width)
+    st.image(image, caption='Uploaded Image', width=200)
 
     # Convert the image to numpy array
     img_array = np.array(image)
@@ -53,4 +52,4 @@ if st.sidebar.checkbox('Show Images'):
         st.header(head)
         image_path = f"{i}.jpeg"
         image = Image.open(image_path)
-        st.image(image, caption=f'Image {i}', width=smaller_width)
+        st.image(image, caption=f'Image {i}', width=200)
