@@ -37,7 +37,7 @@ def predict_class(image):
     return predicted_class
 
 # Streamlit App
-st.title('<h1 style="text-align: center;">Image Classification App</h1>', unsafe_allow_html=True)
+st.markdown('<h1 style="text-align: center;">Image Classification App</h1>', unsafe_allow_html=True)
 # First Tab
 with st.sidebar:
     st.subheader('Upload Your Image')
