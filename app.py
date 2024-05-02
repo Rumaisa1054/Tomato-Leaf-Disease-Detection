@@ -42,15 +42,14 @@ if uploaded_image is not None:
 
     # Make prediction
     prediction = predict_class(img_array)
-    pred = 'Prediction :' + prediction
-    st.header(pred)
+    st.write('Prediction :' , prediction)
 
 # Second Tab
 if st.sidebar.checkbox('Show Images'):
     st.subheader('Images from 1.jpeg to 6.jpeg')
     arr = ['Data Augmentation : ', 'Model : ', "Confusion Matrix : ","Accuracy : ","Conclusion : ","Dataset : "]
     for i in range(1, 7):
-        head = arr[i]
+        head = arr[i-1]
         st.header(head)
         image_path = f"{i}.jpeg"
         image = Image.open(image_path)
